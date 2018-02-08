@@ -1,0 +1,186 @@
+/**
+ * 
+ */
+angular.module('app')
+              .controller('dataSourceCtrl',  ['$scope','$http',function($scope,$http){
+            	    
+            	     
+                  $scope.option= {
+                    info: {
+                        pagesize: 10, //每页显示
+                        upage: false, //上一页
+                        curpage: 1, //当前页
+                        total: 1, //总页数
+                        tzpage: 1, //跳转页
+                        tzistrue: false, //是否跳转页
+                        multiselect: true, //多选
+                        toolbar: true,
+                        sortname: 'id',
+                        sort: 'asc',
+                        del: true, //详情
+                        edit: true, //编辑
+                        delete: true, //删除
+                        dispose: true
+                    },
+                  title: [   {"fieldname":"name","title":"数据资源名称"},
+                             {"fieldname":"type","title":"数据资源类型"},
+                             {"fieldname":"dbUrl","title":"数据源URL"},
+                             {"fieldname":"dbUsername","title":"用户名"},
+                             {"fieldname":"adminCompany","title":"管理单位"},
+                             {"fieldname":"adminName","title":"管理员"},
+                             {"fieldname":"adminPhone","title":"联系电话"},
+                             {"fieldname":"status","title":"连接状态"},    ],
+                  data:[],
+              
+                };
+
+                 
+                  $scope.show = false;
+                  
+                  $scope.adddata = false;
+                  $scope.updatedata = false;
+                 $scope.add=function(){
+                	  $scope.adddata = true;
+                      $scope.show=true;
+                }
+                 
+                 //新增数据参数的获取
+               var vals1 = $("#cnt").find('input');
+               var vals2 = $("#cnt").find('select');
+                 $scope.check = function(){
+                	 var name = vals1[0].value;
+                	 var    dsSourceType=vals2[1].value;
+                	 var	desc=vals1[1].value;	
+                	 var	type=vals2[0].value;	
+                	var	connInfo={
+                	 		url:vals1[2].value,
+                	 		username:vals1[3].value,
+                	 		password:vals1[4].value,
+                	 	};
+                	//jdbc:oracle:thin:@192.168.0.247:1521:orcl
+                	 	//http://192.168.0.42:8080/console/data/standard/datasource/testConnect.do
+                	$.ajax({
+            			method: 'POST',
+            			url:"http://localhost:8080/console/data/standard/datasource/add.do",
+                      	 headers:{ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                      	data:{
+                      		name:name,
+                      		desc:desc,
+                      		type:type,
+                      		dsSourceType:dsSourceType,
+                      		connInfo:JSON.stringify(connInfo)
+                      	}
+                      
+            		}).success(function(data){
+            			console.log(JSON.parse(data));
+            			//关闭弹窗
+            			//$scope.show = false;
+            		//刷新页面
+            			 $scope.isRefresh = ! $scope.isRefresh;
+            		}).error(function(data) {
+                                  
+                    });
+                	 	
+                	 	
+                	 	
+                	 		
+
+
+           
+
+                //删除功能
+                 $scope.delete = function(id){
+                	 console.log(id);
+                	 $.ajax({
+                		 	method: 'POST',
+                		 	url:"http://localhost:8080/console/data/standard/datasource/delete.do",
+                		 	headers:{ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+	                      	data:{
+	                      		ids:id
+	                      	}
+                	 }).success(function(data){
+            			console.log(JSON.parse(data));
+            			
+            		//刷新页面
+            			 $scope.isRefresh = ! $scope.isRefresh;
+            		}).error(function(data) {
+                                  
+                    });
+                	 	
+                	 	
+                 }
+                 $scope.user = '';
+                 //修改功能
+                $scope.edit=function(obj){
+                	
+                	 //弹窗出现,填入当前修改项的信息
+               	 		$scope.show = true;
+               	 	 $scope.adddata = false;
+               	 	 $scope.updatedata = true;
+                	 
+
+                	 
+                	var thisInfo= JSON.parse(obj.connInfo);
+                	 $scope.user = obj.name;
+                	 vals2[0].value = 	obj.type;
+                	 
+                	 vals2[1].value= obj.dsSourceType;
+                	 vals1[1].value = obj.desc;
+                	 vals1[2].value = thisInfo.url;
+                	 vals1[3].value = thisInfo.username;
+                	 vals1[4].value = thisInfo.password;
+                	 
+                	 
+                	 $scope.update = function(){
+                     	//重新读取数据
+                     	 var name = vals1[0].value;
+                     	 var    dsSourceType=vals2[1].value;;
+                     	 var	desc=vals1[1].value;	
+                     	 var	type=vals2[0].value;	
+                     	var	connInfo={
+                     	 		url:vals1[2].value,
+                     	 		username:vals1[3].value,
+                     	 		password:vals1[4].value,
+                     	 	};
+                     	//发起ajax请求
+                     	$.ajax({
+                 			method: 'POST',
+                 			url:"http://localhost:8080/console/data/standard/datasource/update.do",
+                           	 headers:{ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                           	data:{
+                           		name:name,
+                           		desc:desc,
+                           		type:type,
+                           		id:obj.id,
+                           		
+                           		connInfo:JSON.stringify(connInfo)
+                           	}
+                           
+                 		}).success(function(data){
+                 			console.log(JSON.parse(data));
+                 			//关闭弹窗
+                 			//$scope.show = false;
+                 		//刷新页面
+                 			 $scope.isRefresh = ! $scope.isRefresh;
+                 		}).error(function(data) {
+                                       
+                         });
+                     	 	
+                     }
+                	
+                	 
+                } 
+               
+                 
+            $scope.curFormat = function(file, value) {
+              // console.log($scope.dataset);
+              if(file=='enabled'&&value!=undefined){
+                  if(value==0)
+                  return $sce.trustAsHtml('禁用');
+                  else if(value==1)
+                  return $sce.trustAsHtml('启用');
+                }
+            }
+          
+            	  
+              }]);

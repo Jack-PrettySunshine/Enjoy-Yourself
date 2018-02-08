@@ -1,0 +1,36 @@
+<style type="text/css">
+	 .sub-table {
+	 	  width: 1000px;
+	 	  height: auto;
+	 }
+	 .sub-table{
+	 	 height: 80%;
+	 	 width:100%;
+	 }
+	 .sub-table table{
+
+	 }
+	 .sub-table table th{
+	 	  width: 10%;
+	 }
+	 .sub-table td {
+	 	 text-align: center;
+	 }
+</style>
+<div  ng-controller="tableDataCtrl" class="sub-table">
+        <table>
+        	<tr><th>序号</th><th ng-repeat="item in dataset.title">[[item.title]]</th></tr>
+        	<tr ng-repeat="item in dataset.data" >
+                             
+	        <td ng-if="dataset.data.length" style="text-align: center" >
+	          <span>[[$index+1]]</span>
+	        </td>              
+	        <td ng-repeat="i in dataset.title" ng-bind-html="curFormat({file:i.fieldname,value:item[i.fieldname]})||cu_dataformat(i.fieldname,i.datatype,item[i.fieldname])">
+	           
+	        </td>
+        <td>
+        </td>
+      </tr>
+        </table> 
+      
+</div>

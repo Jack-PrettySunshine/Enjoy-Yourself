@@ -1,0 +1,29 @@
+.second{position:relative;}
+.second select {  
+    width: 100%;  
+    height: 200px;  
+    margin: 0px;  
+    outline: none;  
+  
+    /*margin-top: 22px;  */
+    margin-top:-4px;
+    position:absolute;
+    left:0;
+}
+.second select option{
+     text-indent: 3px;
+}
+.second select option:hover{background-color:#1e91ff;color:#fff;}  
+.second input {  
+    width: 167px;  
+    top: 9px;
+    height:33px;  
+    outline: none;  
+    border: 0pt;  
+   
+    line-height: 16px;  
+    left: 8px;  
+    height: 16px;  
+    border: 1px solid #999;  
+    text-indent: 3px;
+}  

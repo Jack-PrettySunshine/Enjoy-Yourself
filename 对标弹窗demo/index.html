@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对标弹窗demo</title>
+	<link rel="stylesheet" href="select.css">
+	<link rel="stylesheet" href="iconfont.css">
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	
+	<style>
+		.layer{
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 99;
+          opacity: 0.4;
+          background: #000;
+		}
+		.layer-second{
+		position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 101;
+          opacity: 0.5;
+          background: #000;
+		}
+		.modal-dialog{
+			position: absolute;
+            top: 43%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            z-index: 100;
+            width:930px;
+            padding:0 15;
+            font-size: 14px;
+		}
+		.modal-dialog .modal-header{
+            height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+            background: rgb(17,142,238);
+            color: #fff;
+            margin-bottom: 10px;
+       	}
+       .modal-dialog .modal-title{
+       		margin:0;
+       		padding:0;
+       		font-size: 16px;
+       		font-weight:500;
+       		float: left;
+       }
+       .modal-dialog .close{
+       		float: right;
+       		margin:10px 10px;
+       		    font-size: 25px;
+			    color: #FFF;
+			    font-weight: 100;
+			   background:0 0;
+			    display: block;
+			    border:none;
+       }
+       .modal-dialog .modal-content{
+			position: relative;
+		    max-height: 350px;
+		    padding: 15px;
+		    overflow-y: auto;
+       }
+       .modal-dialog  label {
+		    display: inline-block;
+		    max-width: 100%;
+		    margin-bottom: 5px;
+		    font-weight: 700;
+		    /*margin-left:20px;*/
+		   	font-size: 14px;
+		}
+		.modal-dialog hr{
+			border:0;
+			border-top:1px solid #ddd;
+			margin:20px 0;
+		}
+		.col-md-6{
+			float:left;
+			font-size:14px;
+			text-align:left;
+		}
+		.col-md-6:nth-of-type(2){float:right;}
+		.second span{
+					height: 26px;
+				    position: absolute;
+				    top: -2px;
+				    right: 1px;
+				    width: 20px;
+		}
+		.second span b{
+			    border-color: #888 transparent transparent transparent;
+			    border-style: solid;
+			    border-width: 5px 4px 0 4px;
+			    height: 0;
+			    left: 50%;
+			    margin-left: -4px;
+			    margin-top: -2px;
+			    position: absolute;
+			    top: 50%;
+			    width: 0;
+
+		}
+		.row{
+			display:block;
+
+		}
+		.form-group {margin-bottom: 15px;}
+		.row .form-group .addicon{
+			width:20px;
+			height: 20px;
+			background-color:rgb(17,142,238);
+			color:#fff;
+			text-align: center;
+			display: block;
+			margin-top:3px;
+			margin-left:10px;
+			text-decoration-line: none;
+			line-height: 20px;
+		}
+		.row .form-group .addicon:before{
+    		content: "\2b";
+		}
+		.left{float:left;}
+		.right{float:right;}
+		.dataItemTable {
+		    margin: 10px 2px 10px 5px;
+		}
+		table{
+			    border-spacing: 0;
+    			border-collapse: collapse;
+		}
+		.dataItemTable th,.baseDataTable th {
+		    height: 30px;
+		    border: 1px solid rgb(169, 169, 169);
+		    padding: 1px 10px;
+		}
+		.dataItemTable td,.baseDataTable td{
+		    height: 30px;
+		    border: 1px solid rgb(169, 169, 169);
+		  	text-align: center;
+		}
+		.dataItemTable td{
+
+		 color: #428bca;
+		}
+		.form-control{
+			width: 80%;
+		    padding: 2px 8px;
+		    box-sizing: border-box;
+		    /* margin: 0 auto; */
+		    margin-left: 32px;
+		}
+		.btn{
+			background-color: rgb(17,142,238);
+		    color: #fff;
+		    width: 48px;
+		    height: 26px;
+		    display: block;
+		    border-radius:4px;
+		    text-align:center;
+		    line-height:26px;
+		    margin-left:123px;
+		}
+		.translation{
+			color: #333;
+	    	margin-left:100px;
+	    	margin-right: 100px;
+	    	border:1px solid #ccc;
+	    	display: inline-block;
+		    padding: 0 4px;
+		  	border-radius:4px;
+		    font-weight:400;
+		    width:30px;
+		    text-align:center;
+		}
+		.translation:hover{background:#ccc;}
+		.form-controls[disabled]{
+			cursor: not-allowed;
+		   /* background-color: #eee;*/
+		    opacity: 1;
+		}
+		.modal-footer .btn{
+          float:right;
+          height: 24px;
+          width: 100px;
+          border: 0;
+          border-radius: 15px;
+          background: #ddd;
+         
+          font-size: 12px;
+          margin-right: 16px;
+          outline: none;
+       }
+	</style>
+</head>
+	
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+	123123123er23redfgsdgrfgwerfgwertfgwertfwtgwertg
+		<div class="modal-dialog" >
+			<div class="modal-header">
+				 <h4 class="modal-title">对标</h4>
+				 <button class="close" >&times;</button>
+			</div>
+			<div class="modal-content">
+				<div class="form">
+					<label style="font-size: 15px;">系统推荐</label>
+					<hr/>
+					<div class="row" style="display:block;overflow:hidden;">
+						<div class="form-group col-md-6">
+							<table>
+								<tbody>
+									<tr>
+										<th width="33px"></th>
+										<th width="150px">限定词标识符</th>
+										<th width="150px">限定词中文名</th>
+									</tr>
+								</tbody>
+							</table>
+							<div style="height: 80px;overflow: auto;">
+								<table id="determinerTable">
+								</table>
+							</div>
+						</div>
+							<div class="form-group col-md-6">
+								<table>
+									<tbody>
+										<tr>
+											<th width="33px"></th>
+											<th width="150px">数据元标识符</th>
+											<th width="150px">数据元中文名</th>
+											<th width="150px">数据元内部标识符</th>
+										</tr>
+									</tbody>
+								</table>
+								<div style="height: 80px;overflow: auto;">
+								<table id="metadataTable">
+								</table>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="row" style="height:60px;margin-top:5px;">
+							<div class="form-group left">
+								<label for="" style="font-size: 14px;margin-right:20px;">限定词</label>
+								<span class="second" >  
+								    <input type="text" name="makeupCo" id="makeupCo" class="makeinp" onfocus="setfocus(this)" oninput="setinput(this);" placeholder="请选择或输入1"/>  
+									   <select name="makeupCoSe" class="typenum" onchange="changeF(this)" size="10" style="display:none;">  
+									       <option value="">1</option>  
+									       <option value="">2</option>  
+									       <option value="">12323</option>  
+									       <option value="">31</option>  
+									       <option value="">1332</option>  
+									       <option value="">412</option>  
+									       <option value="">42</option>  
+									       <option value="">11</option>  
+									   </select>
+									<span><b></b></span>
+								</span>
+								   
+							</div>
+							<div class="form-group left" style="margin-left:20px;">
+								<a href="" class="addicon" ng-click="addDeterminative()"></a>
+							</div>
+
+							<div class="form-group right" style="margin-right:20px;margin-left:20px;">
+								<a href="" class="addicon" ng-click="adddataEle()"></a>
+							</div>
+							<div class="form-group right" >
+								<label for="" style="font-size: 14px;margin-left:20px;margin-right:20px;">数据元</label>
+								<span class="second" >  
+								    <input type="text" name="makeupCo" id="makeupCo" class="makeinp" onfocus="setfocus(this)" oninput="setinput(this);" placeholder="请选择或输入2"/>  
+									   <select name="makeupCoSe" class="typenum" onchange="changeF(this)" size="10" style="display:none;">  
+									       <option value="">1</option>  
+									       <option value="">2</option>  
+									       <option value="">12323</option>  
+									       <option value="">31</option>  
+									       <option value="">1332</option>  
+									       <option value="">412</option>  
+									       <option value="">42</option>  
+									       <option value="">11</option>  
+									   </select>
+									<span><b></b></span>
+								</span>
+							   
+							</div>
+							
+					</div>
+					<label for="">结果</label>
+					<hr>
+					<div class="row">
+						<table style="width:100%%;" class="dataItemTable">
+							<tbody>
+								<tr>
+									<th style="width: 10%;">限定词标识符</th>
+									<th style="width: 10%;">限定词中文名</th>
+									<th style="width: 10%;">数据元标识符</th>
+									<th style="width: 10%;">数据元中文名</th>
+									<th style="width: 10%;">数据项标识符</th>
+									<th style="width: 10%;">数据项中文名</th>
+								</tr>
+								<tr>
+									<td id="determiner_identifier"></td>
+									<td id="determiner_cnName"></td>
+									<td id="metadata_identifier"></td>
+									<td id="metadata_cnName"></td>
+									<td id="dataItem_identifier"></td>
+									<td id="dataItem_cnName"></td>
+								</tr>
+								<tr>
+									<th>数据元说明</th>
+									<th>数据元内部标识符</th>
+									<th>数据类型</th>
+									<th>表示词</th>
+									<th>表示格式</th>
+									<th>值域</th>
+								</tr>
+								<tr>
+									<td id="metadata_description"></td>
+									<td id="metadata_inIdentifier"></td>
+									<td id="metadata_dataType"></td>
+									<td id="metadata_indicationWord"></td>
+									<td id="metadata_format"></td>
+									<td id="metadata_valueDomain"></td>
+								</tr>
+								<tr>
+									<th colspan="2">数据元同义词</th>
+									<th colspan="2">追加同义词</th>
+									<th colspan="2">操作</th>
+								</tr>
+								<tr>
+									<td id="metadata_synonyms" colspan="2"></td>
+									<td colspan="2"><input id="append_synonyms_input" placeholder="角色ID" type="text" class="form-control"></td>
+									<td colspan="2"><a class="btn btn-info" ext-event="click appendSynonyms">追加</a></td>
+								</tr>
+						</tbody>
+						</table>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="form-group">
+							<label for="">基本信息</label>
+							<table class="baseDataTable" style="width:100%;margin-bottom: 5px;">
+								<tbody>
+									<tr>
+										<th style="width:15%;">字段名称</th>
+										<th style="width:25%;">字段描述</th>
+										<th style="width:17%;">字段数据类型</th>
+										<th style="width:17%;">字段数据长度</th>
+										<th style="width:11%;">代码集</th><th style="width:15%;">是否代码列</th>
+									</tr>
+									<tr>
+										<td id="cmark_colName">BR_ID</td><td id="cmark_colDesc">角色ID</td>
+										<td id="cmark_colType">DOUBLE</td><td id="cmark_colLength">22</td>
+										<td id="cmark_tblTable"></td>
+										<td><input type="checkbox" id="isCodeColcheck"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row" style="overflow: hidden;">
+						<div class="form-group left" style="margin-left: 160px;">
+							<input type="text" id="bigintValue" class="form-controls" placeholder="BIGINT类型日期值">
+						</div>
+						<div class="form-group left">
+							<a class="translation"><i class="iconfont icon-jiantou-copy" style="font-size:14px;"></i></a>
+
+						</div>
+						<div class="form-group left">
+							<input type="text" id="bigintValue" class="form-controls" placeholder="转换日期时间值" disabled>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group">
+								<label for="">数据预览</label>
+								<a class="btn btn-info" ext-event="click appendSynonyms" style="display:inline-block;margin-left:30px;">预览</a>
+						</div>
+					</div>
+					<div class="row">
+						<textarea name="" readonly="readonly" id="" cols="100" rows="10" style="width:100%;resize:none;outline:none;"></textarea>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer" style="overflow:hidden;height:40px;border-top:1px solid #ddd;line-height:40px;position:fixed;bottom:0">
+					
+					<button class="btn">确定</button>
+					<button class="btn">取消</button>
+
+			</div>
+		</div>
+
+		<!-- <div class="modal-second-dialog">
+			
+		</div> -->
+
+		 <div class="layer"></div>
+		 <div class="layer-second" ng-show="isaddDeter"></div>
+	</div>
+	<script src="select.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.isaddDeter = false;//添加限定词按钮遮罩层开关
+
+		    $scope.addDeterminative = function(){
+		    	$scope.isaddDeter = true;//遮罩层出现
+		    }
+
+		    $scope.adddataEle = function(){
+		    	$scope.isaddDeter = true;//遮罩层出现
+		    }
+		});
+	</script>
+
+</body>
+</html>

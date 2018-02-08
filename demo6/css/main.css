@@ -1,0 +1,424 @@
+  body,div,p,span,ul,li{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html {
+    max-height: 100%;
+    min-height: 100%;
+    height: 100%;
+    _height: 100%;
+    _max-height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    max-height: 100%;
+    min-height: 100%;
+    height: 100%;
+    _height: 100%;
+    _max-height: 100%;
+    overflow-y: hidden;
+}
+
+ body {
+ 
+  font-size: 13px;
+}
+ li{
+  list-style: none;
+ }
+ a {
+   text-decoration: none;
+   color:#ffffff;
+ }
+
+ .ng-cloak{
+    display:none;
+ } 
+
+ .main {
+    position: relative;
+ }
+.head {
+    color: #ffffff;
+   font-family: SimHei;
+   height: 80px;
+   background: rgb(17,142,238);
+}
+.content{
+      background-color: rgb(241,244,245);
+ }
+.clearfix:after{
+ content: "";
+ display: block;
+height: 0;
+clear: both;
+}
+.head .logo{
+  
+   font-size: 20px;
+   float: left;
+   width: 30%;
+   height: 80px;
+   line-height: 80px;
+   margin-left: 20px;
+  
+}
+.head .logo img{
+   vertical-align: middle;
+   width: 70%;
+}
+.head .nav {
+    float: left;
+   
+}
+.head .nav>ul>li{
+    list-style: none;
+    float: left;
+    width: 80px;
+    height: 80px;
+    padding-top: 15px;
+    position: relative;
+    text-align: center;
+  
+    
+}
+.head .nav img{
+   
+   
+}
+.head .nav a{
+   position: absolute;
+   top: 15px;
+   left: 0;
+   display: block;
+   height: 80px;
+   width: 80px;
+   line-height: 80px;
+   text-align: center;
+  
+}
+
+.head .nav >ul >li >span {
+      display: block;
+      text-align: center;
+}
+
+
+.head .right-head {
+      float: right;
+      color:#ffffff;
+      margin-right: 20px;
+}
+.head .right-head >div{
+      margin-top: 8px;
+}
+.head .right-head img {
+     vertical-align: middle;
+
+}
+
+
+.active {
+    background:rgba(0,0,0,0.3) !important;    
+
+  
+}
+
+.content >div {
+   float: left;
+}
+
+.main .left-menu {
+    background-color: rgb(52,69,99);
+   
+    color: #ffffff;
+    position: relative;
+   
+}
+.main .left-menu a{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.main .drop-menu {
+     background-color:rgb(52,69,99);
+     color: #ffffff;
+}
+
+.main .first-menu {
+      padding: 5px 15px;
+}
+.main .first-menu >div{
+      float: left;
+}
+.main .drop-menu .second-menu {
+      height: 40px;
+      line-height:40px;
+      padding-left: 15px;
+
+    
+     
+}
+.main .drop-menu  img {
+   
+   vertical-align: middle;
+   
+}
+
+.main .drop-menu .second-menu  {
+    display: inline-block;
+   
+   
+}
+
+.main .drop-menu .leaf:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+
+}
+
+.main .drop-menu .leaf {
+  
+    height: 30px;
+    line-height: 30px;
+    padding-left: 50px;
+    background-color: rgb(50,65,94);
+}
+.chart-main {
+    background-color: rgb(241,244,245);
+    position: absolute;
+    left: 160px;
+}
+
+.animate-show {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+  height:30px;
+
+
+ 
+}
+
+.animate-show.ng-hide {
+  height:0;
+  color: rgb(50,65,94);
+ 
+ 
+}
+
+.animate-hide {
+    -webkit-transition:all linear 0.5s;
+     transition: all linear 0.5s;
+     width: 100px;
+ 
+ 
+}
+
+.animate-hide.ng-hide {
+  
+    width: 0;
+    color: rgb(50,65,94);
+}
+
+.sel-menu {
+    height: 40px;
+    width: 100%;
+}
+
+.sel-menu li {
+   float: left;
+}
+
+.sel-menu i {
+     display: inline-block;
+     height: 20px;
+     width: 20px;
+
+}
+.sel-menu a {
+   display: inline-block;
+   background-color: rgba(217, 208, 208, 0.3);
+   height: 40px;
+   line-height: 40px;
+   color: #000;
+   margin-left: 5px;
+}
+
+.arrow-left {
+    background: url(../img/icoll.png) center  no-repeat;
+}
+
+.arrow-down {
+    background:  url(../img/icol.png) center  no-repeat;
+}
+.arrow-hide {
+     background:  url(../img/icos.png) center  no-repeat;
+}
+.arrow-show {
+     background:  url(../img/icoz.png) center  no-repeat;
+}
+
+#arrow-flag {
+  height:30px;
+  width:30px;
+  position:absolute;
+  bottom: 50px;
+  right: 20px;
+}
+
+  body,div,p,span{
+  padding: 0px;
+  margin: 0px;
+}
+
+.chart-body {
+   padding: 10px 10px;
+   background-color: rgb(241,244,245);
+   height: 100%;
+   width: 100%;
+} 
+.chart-body >div{
+     float: left;
+     margin-left: 15px;
+    
+     
+
+}
+.chart-body .firt-chart{
+      width: 40%;
+      margin-top:0
+}
+
+.chart-body .second-chart{
+      width: 55%;
+
+}
+.chart-body .third-chart{
+    margin-top: 20px;
+    padding-top:20px;
+
+    /* margin-left: 30px; */
+    width: 96.1%
+}
+.chart-body .title{
+      color: rgb(55,71,79);
+      margin-bottom: 10px;
+      font-size: 16px;
+}
+
+#wrap{
+    background-color:#ffffff;
+    color: #ffffff;
+    height: 270px;
+    padding: 20px 20px;
+}
+
+#rect-set {     
+        width: 650px;
+        margin: 0 auto;
+}
+#rect-set >div{
+     float: left;
+     margin-left: 28px;
+}
+
+.rect  {
+  
+    width: 130px;
+    margin-left: 2px;
+    border-radius: 2px;
+    height: 64px;
+  
+}
+
+.rect p{ 
+  text-align: center;
+ }
+
+.rect  p:first-child{
+      font-size: 20px;
+    font-weight: bolder;
+    font-family: serif;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 8px;
+}
+
+.rect p:last-child{
+    line-height: 25px;
+    height: 25px
+}
+#circle-set {
+     width: 650px;
+     margin: 0 auto; 
+     margin-top: 20px; 
+}
+
+#circle-set >div{
+  float:left;
+   
+  
+}
+
+#circle-set >div >div{
+      text-align: center;
+}
+.circle {
+  width: 70px;
+    height: 70px;
+    line-height: 70px;
+    color: #fff;
+    border-radius: 70px;
+    /* margin-left: 5px; */
+    margin-left: 35px;
+    font-size: 20px;
+  
+
+}
+
+  .wrap-main{
+        margin:15px;
+        border: 1px solid #e2e2e2;
+    }
+   .wrap-main  .tableWrap{
+    
+       
+
+
+   }
+
+   #left {
+      width: 130px;
+   }
+  .btn {
+  height: 24px;
+  width: 120px;
+  border: 0;
+  border-radius: 15px;
+  background: rgb(17,142,238);
+  color: #ffffff;
+  font-size: 12px;
+}
+.txtBox {
+  height: 22px;
+  float: right;
+  border-radius: 15px;
+  border: 1px solid #e2e2e2;
+  padding-left: 30px;
+  font-weight: 600;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  transition: 1s;
+}
+#queryFilter {
+   margin: 10px;
+}
+.instruction {
+    color: rgb(55,71,79);
+    text-align: right !important;
+    margin-right: 10px;
+    margin-top: 10px;
+}

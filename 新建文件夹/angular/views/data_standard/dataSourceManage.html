@@ -1,0 +1,425 @@
+ <style type="text/css">
+      h4 {
+          margin: 0;
+          padding: 0;
+      }
+
+       .modal-dialog {
+             position: absolute;
+            top: 47%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            z-index: 100;
+       }
+       .modal-preview{
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            z-index: 100;
+            /*width:600px;*/
+            width:490px;
+       }
+
+       .modal-preview table{
+          width:100%;
+          overflow: auto;
+          table-layout: fixed;
+          display: block;
+          max-height: 350px;
+         
+          overflow-y: auto;
+       }
+       .modal-preview table tr{
+          height:32px;
+          line-height: 32px;
+          /*display: block;*/
+           box-sizing: border-box;
+           padding: 0 25px;
+       }
+       .modal-preview table tbody tr:nth-child(odd){
+            background: #f5f5f5;
+            border-top: 1px solid #e7e7e7;
+
+       }
+        .modal-preview table  th{
+              /* width: 176px;
+              text-align: left;*/
+              width:160px;
+             text-align: center
+        }
+         .modal-preview table  td{
+               width: 160px;
+              text-align: center;
+              color:#333;
+            /*  display: inline-block;*/
+        }
+       /* .modal-preview table tbody tr td:nth-of-type(1){
+             
+             padding-left:9px;
+
+        }*/
+        .modal-preview .total{
+          background: #f5f5f5;
+          border-top: 1px solid #e7e7e7;
+          height:32px;
+          line-height: 32px;
+          display: block;
+          box-sizing: border-box;
+          padding: 0 25px;
+          color:#333;
+          margin-top:15px;
+        }
+        .modal-preview .view-footer{
+          border-top: 1px solid #e7e7e7;
+          height:50px;
+        } 
+        .modal-preview .view-footer button{
+          float:right;
+          color:#fff;
+          background:#58bc58;
+          height:32px;
+          width:42px;
+          border:0;
+          border-radius: 4px;
+          margin:9px 10px 0 0;
+        }
+        .modal-preview .nodata{
+          height:32px;
+          line-height: 32px;
+          background: #f5f5f5;
+          border-top: 1px solid #e7e7e7;
+          box-sizing: border-box;
+          padding: 0 25px;
+          color:#333;
+          text-align: center;
+        }
+
+        .modal-preview  .lihead {
+          overflow: hidden;
+          height:32px;
+          line-height: 32px;
+          padding:0 15px;
+        }
+        .modal-preview  .lihead li{
+         
+              float: left;
+              margin-right: 79px;
+              margin-left: 47px;
+        }
+       .modal-header{
+             height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+            background: rgb(17,142,238);
+            color: #fff;
+            margin-bottom: 10px;
+       }
+       .modal-body  .row{
+         
+           padding-left: 20px;
+       }
+       .modal-body  .row div {
+          float: left;
+          margin: 10px 20px 10px 20px;
+       } 
+        .modal-body  .row div input {
+            display: block;
+        height: 30px;
+        width: 255px;
+        border-radius: 3px;
+        -webkit-appearance: textfield;
+        border: 1px solid #ccc;
+        margin-top: 3px;
+        padding-left: 5px;
+        }
+       
+         .modal-body  .row select{
+              display: block;
+          height: 30px;
+          width: 255px;
+          border-radius: 3px;
+          color:#555;
+          border: 1px solid #ccc;
+          margin-top: 3px;
+          padding-left: 5px;
+         }
+        .clearfix:after{
+         content: "";
+         display: block;
+        height: 0;
+        clear: both;
+        }
+        textarea {
+          display: block;
+
+          width: 560px;
+          height: 80px;
+          padding-left:5px;
+
+        }
+
+       input[type="button"]{ outline:none; }
+       .layer {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 99;
+          opacity: 0.5;
+          background: #ccc;
+       }
+
+        .modal-footer{
+          padding-bottom:37px;
+        } 
+       .modal-footer .btn{
+          float:right;
+          height: 24px;
+        width: 110px;
+        border: 0;
+        border-radius: 15px;
+        background: #ddd;
+       
+        font-size: 12px;
+        margin-right: 16px;
+       }
+       .modal-footer .btn-success{
+          background: #58bc58;
+          color: #ffffff;
+       }
+    .wrap-main input.wraps{
+      width:100% !important;
+    }
+    .wrap-main .seach{
+    float:right;}
+    select{
+      color:#555;
+    }
+    .table tr td {
+      padding-right: 32px;
+      max-width: 435px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+  }
+  </style>
+    <div  class="wrap-main clearfix" style="background:#ffffff;position:relative">
+
+              <div id="queryFilter">
+                <div>
+                    <input type="button" value="新增" class="btn" ng-click="add()" /> 
+                    
+                     <div class="seach">
+                     
+                    
+                       <input  type="text" class="" ng-model='search'   placeholder="请输入 数据源名称" />
+                    
+                    
+                        <select name="sourcetype" ng-model='searchtype'>
+                <option value="" selected="">选择数据源类型</option>
+                <option value="ORACLE">ORACLE</option>
+                <option value="MYSQL">MYSQL</option>
+              
+                <option value="HIVE">HIVE</option>
+                <option value="HBASE">HBASE</option>
+                
+              </select>
+            <input type="button" value="查询" class="btnseach btn" ng-click="seachFn()" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="tableWrap">
+              <cur-Table tb-Id="t1" tb-Url="http://localhost:8080/console/data/standard/datasource/list.do"
+                seach-Text="seachtext" sel-Id="selId" sel-Ids="selIds"
+                sel-Date="selDate" edit="edit(item)" delete="delete(id)"
+                del="del(item)" is-Refresh="isRefresh" is-Seach="isSeach"
+                cur-Format='curFormat(file,value)' dataset='dataset' option="option" > </cur-Table>
+
+              </div>    
+             
+         <div class="modal-dialog" ng-show="show" >
+                 
+                    <div class="modal-header">
+                     
+                      <h4 class="modal-title">新增数据源</h4>
+                    </div>
+                    <div class="modal-body" id="cnt">
+                      <form action="" name="myForm" novalidate>
+                          <div class="row clearfix"> 
+
+                             <div> 
+                                  <label><span style="color:red">*</span>数据源名:</label>
+                                 
+                                  <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                                         <span ng-show="myForm.user.$error.required">此项不能为空</span>
+                                  </span>
+                                 <input placeholder="请输入数据源名" type="text" ng-model="user" > </div>                                                   
+                             <div>
+                              <label>
+                                <span style="color:red">*</span>数据库类型:
+                              </label>
+                              <select name="type" class="form-control" ext-event="change dbTypeChange" ext-validate="isNotNull" ng-model= "thistype" ng-change="typeshow()">
+                                  <option value="">请选择</option>
+                                  <option value="ODPS" >ODPS</option>
+                                  <option value="ORACLE">ORACLE</option>
+                                  <option value="MYSQL">MYSQL</option>
+                                  <option value="HIVE" >HIVE</option>
+                                  <option value="HBASE">HBASE</option>
+                  
+                            </select>
+                             </div> 
+                          </div>
+                           
+                           <div class="row clearfix"> 
+                            
+                              <div> 
+                                  <label><span style="color:red">*</span>组件类型:</label>
+                                  <select name="type" class="form-control" ext-event="change dbTypeChange" ext-validate="isNotNull" ng-model="thattype">
+                                    <option value="">请选择</option>
+                                    <option value="1" >数据源</option>
+                                    <option value="2">目标</option>
+                             </select>
+                </div>
+                          </div> 
+                         
+                         <div class="row clearfix ">
+                              <div style="width:555px"> <label>数据源描述:</label>
+                              <input class="wraps" ng-model="description" placeholder="数据源描述不能超过80字"/></div>
+                          </div>
+                          
+                          <div ng-show="notodps">
+
+                              <div class="row clearfix">
+                                  <div style="width:555px"> <label><span style="color:red">*</span>链接Url:</label>
+                                      <span style="color:red" ng-show="myForm.dbUrl.$dirty && myForm.dbUrl.$invalid">
+                                            <span ng-show="myForm.dbUrl.$error.required">此项不能为空</span>
+                                      </span>
+                                      <input type="text" name="dbUrl" ng-model = "dbUrl" required class="wraps"/>
+                                  </div>
+                              </div>
+
+                               <div class="row clearfix"> 
+                                    <div> 
+                                            <label><span style="color:red">*</span>用户名:</label>
+                                            <span style="color:red" ng-show="myForm.dbUsername.$dirty && myForm.dbUsername.$invalid">
+                                                  <span ng-show="myForm.dbUsername.$error.required">此项不能为空</span>
+                                            </span>
+                                            <input  placeholder="请输入用户名" type="text" name="dbUsername" ng-model = "dbUsername" required>
+                                    </div>
+                                    
+                                    <div>
+                                            <label><span style="color:red">*</span>密码</label>
+                                            <span style="color:red" ng-show="myForm.dbPassword.$dirty && myForm.dbPassword.$invalid">
+                                                  <span ng-show="myForm.dbPassword.$error.required">此项不能为空</span>
+                                            </span>
+                                            <input  placeholder="请输入密码" type="text" name="dbPassword" ng-model="dbPassword" required>
+                                    </div>
+                              </div> 
+                          </div>
+                         
+                          <div ng-show="istodps">
+                            <div class="row clearfix"> 
+                                    <div> 
+                                            <label><span style="color:red">*</span>Endpoint:</label>
+                                           <!--  <span style="color:red" ng-show="myForm.dbUsername.$dirty && myForm.dbUsername.$invalid">
+                                                  <span ng-show="myForm.dbUsername.$error.required">此项不能为空</span>
+                                            </span> -->
+                                            <!-- <input  placeholder="请输入用户名" type="text" name="dbUsername" ng-model = "dbUsername" required> -->
+                                            <input type="text">
+                                    </div>
+                                    
+                                    <div>
+                                            <label><span style="color:red">*</span>项目名称</label>
+                                            <!-- <span style="color:red" ng-show="myForm.dbPassword.$dirty && myForm.dbPassword.$invalid">
+                                                  <span ng-show="myForm.dbPassword.$error.required">此项不能为空</span>
+                                            </span> -->
+                                            <!-- <input  placeholder="请输入密码" type="text" name="dbPassword" ng-model="dbPassword" required> -->
+                                            <input type="text">
+                                    </div>
+                              </div> 
+                             <div class="row clearfix"> 
+                                      <div> 
+                                              <label><span style="color:red">*</span>Access ID:</label>
+                                              <!-- <span style="color:red" ng-show="myForm.dbUsername.$dirty && myForm.dbUsername.$invalid">
+                                                    <span ng-show="myForm.dbUsername.$error.required">此项不能为空</span>
+                                              </span> -->
+                                              <!-- <input  placeholder="请输入用户名" type="text" name="dbUsername" ng-model = "dbUsername" required> -->
+                                              <input type="text" placeholder="请输入AccessID">
+                                      </div>
+                                      
+                                      <div>
+                                              <label><span style="color:red">*</span>Access Key</label>
+                                              <!-- <span style="color:red" ng-show="myForm.dbPassword.$dirty && myForm.dbPassword.$invalid">
+                                                    <span ng-show="myForm.dbPassword.$error.required">此项不能为空</span>
+                                              </span> -->
+                                             <!--  <input  placeholder="请输入密码" type="text" name="dbPassword" ng-model="dbPassword" required> -->
+                                             <input type="text" placeholder="请输入AccessID">
+                                      </div>
+                                </div> 
+                          </div>
+                         
+                              
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn-success btn" ng-click="check()" ng-if="adddata" >确定</button>
+                      <button type="button" class="btn-success btn" ng-click="update()" ng-if="updatedata" >确定</button>
+                      <button type="button" class="btn" ng-click="show=false" >取消</button>
+                    </div>
+                
+                </div>
+          <div class = "modal-preview" ng-show = "isshow">
+                <div class="modal-header">
+                      <h4 class="modal-title">查看所属数据源表</h4>
+                      
+                </div>
+                <div>
+                  <div ng-show ="islengther">
+
+                    <table>
+                          <thead style="width:100%">
+                                <tr>
+                                    <th>序号</th>
+                                    <th>数据表名</th>
+                                    <th>数据表描述</th>
+                                    
+                                </tr>
+                          </thead>
+                          <tbody >
+                               
+                              <tr ng-repeat ="item in previewdata" style="width:583px">
+                                    <td>[[$index+1]]</td>
+                                    <td>[[item.tblName]]</td>
+                                    <td>[[item.tblDesc]]</td>
+                                  
+                              </tr>
+                          </tbody>
+                    </table>
+                    <div class="total">
+                          <p>显示第 1 至 [[thislength]] 项结果，共 [[thislength]]项</p>
+                    </div>
+                  </div>
+                  <div ng-show ="notlengther">
+                      <ul class="lihead">
+                        <li><h4>序号</h4></li>
+                        <li><h4>数据表名</h4></li>
+                        <li><h4>数据表描述</h4></li>
+                      </ul>
+                      <div class="nodata">表中暂无数据</div>
+                  </div>
+                    <div class="view-footer">
+                          <button ng-click="isshow=false">确定</button>
+                    </div>
+                </div>
+          </div>
+          <div class="layer" ng-show="show"></div>
+          <div class="layer" ng-show="isshow"></div>
+          
+          
+           
+    </div>

@@ -1,0 +1,235 @@
+  <style type="text/css">
+      h4 {
+          margin: 0;
+          padding: 0;
+      }
+
+       .modal-dialog {
+             position: absolute;
+            top: 47%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            z-index: 100;
+       }
+       .modal-header{
+             height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+            background: rgb(17,142,238);
+            color: #fff;
+            margin-bottom: 10px;
+       }
+       .modal-body  .row{
+         
+           padding-left: 20px;
+       }
+       .modal-body  .row div {
+          float: left;
+          margin: 10px 20px 10px 20px;
+       } 
+        .modal-body  .row div input {
+          	display: block;
+		    height: 30px;
+		    width: 255px;
+		    border-radius: 3px;
+		    -webkit-appearance: textfield;
+		    border: 1px solid #ccc;
+		    margin-top: 3px;
+		    padding-left: 5px;
+        }
+       
+         .modal-body  .row select{
+         	    display: block;
+			    height: 30px;
+			    width: 255px;
+			    border-radius: 3px;
+			   	color:#555;
+			    border: 1px solid #ccc;
+			    margin-top: 3px;
+			    padding-left: 5px;
+         }
+        .clearfix:after{
+         content: "";
+         display: block;
+        height: 0;
+        clear: both;
+        }
+        textarea {
+          display: block;
+
+          width: 560px;
+          height: 80px;
+          padding-left:5px;
+
+        }
+
+       input[type="button"]{ outline:none; }
+       .layer {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 99;
+          opacity: 0.5;
+          background: #ccc;
+       }
+
+        .modal-footer{
+        	padding-bottom:37px;
+        } 
+       .modal-footer .btn{
+       		float:right;
+       		height: 24px;
+		    width: 110px;
+		    border: 0;
+		    border-radius: 15px;
+		    background: #ddd;
+		   
+		    font-size: 12px;
+		    margin-right: 16px;
+       }
+       .modal-footer .btn-success{
+       		background: #58bc58;
+       		color: #ffffff;
+       }
+
+  </style>
+    <div  class="wrap-main clearfix" style="background:#ffffff;position:relative">
+<!-- <div id="left">
+  
+    <tree-view  tree-data="tree" text-field="name" value-field='id' item-clicked="demo.itemClicked($item)" item-checked-changed="demo.itemCheckedChanged($item)" can-checked="true">
+     </tree-view> 
+</div> -->
+              <div id="queryFilter">
+                <div>
+                    <input type="button" value="新增" class="btn" ng-click="add()"
+                      /> <input
+                    type="button" value="查询" class="btn" ng-click="seachFn()" />
+                     <input
+                    type="text" class="txtBox" ng-model='seachtext'
+                    ng-keydown="seachEnter($event)" placeholder="请输入 " />
+                </div>
+              </div>
+
+              <div class="tableWrap">
+              <cur-Table tb-Id="t1" tb-Url="http://localhost:8080/console//data_center/datasource/list.do"
+                seach-Text="seachtext" sel-Id="selId" sel-Ids="selIds"
+                sel-Date="selDate" edit="edit(item)" delete="delete(id)"
+                del="del(item)" is-Refresh="isRefresh" is-Seach="isSeach"
+                cur-Format='curFormat(file,value)' dataset='dataset' option="option" > </cur-Table>
+
+              </div>    
+                    
+                <div class="modal-dialog" ng-show="show" >
+                 
+                    <div class="modal-header">
+                     
+                    <h4 class="modal-title">新增数据源</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form action="" name="myForm" novalidate>
+                          <div class="row clearfix"> 
+
+                             <div> <label><span style="color:red">*</span>数据源名:</label>
+                             
+                             	<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+								<span ng-show="myForm.user.$error.required">此项不能为空</span>
+								</span>
+                             <input placeholder="请输入数据源名" type="text" name="user" ng-model="user" required> </div> 
+                             	
+    							                                                   
+                             <div>
+                             	<label>
+                             		<span style="color:red">*</span>数据库类型:
+                             	</label>
+                             		<select name="type" class="form-control" ext-event="change dbTypeChange" ext-validate="isNotNull">
+										<option value="ORACLE" selected="">ORACLE</option>
+										<option value="MYSQL">MYSQL</option>
+										<option value="ADS">ADS</option>
+										<option value="RDS">RDS</option>
+										<option value="POSTGRESQL">POSTGRESQL</option>
+										<option value="APACHEDERBY">APACHEDERBY</option>
+										<option value="H2">H2</option>
+										<option value="HSQLDB">HSQLDB</option>
+										<option value="DB2">DB2</option>
+										<option value="SYBASE">SYBASE</option>
+										<option value="INFORMIX">INFORMIX</option>
+										<option value="SQLSERVER2000">SQLSERVER2000</option>
+										<option value="SQLSERVER2005">SQLSERVER2005</option>
+										<option value="SQLSERVER2008">SQLSERVER2008</option>
+										<option value="MYSQL">IMPALA</option>
+										<option value="MYSQL">GREENPLUM</option>
+										<option value="MYSQL">达梦DB</option>
+									</select>
+                             </div> 
+                          </div>
+                           <div class="row clearfix"> 
+                             <div><label><span style="color:red">*</span>数据库服务器IP:</label>
+                             	<span style="color:red" ng-show="myForm.dbIp.$dirty && myForm.dbIp.$invalid">
+								<span ng-show="myForm.dbIp.$error.required">此项不能为空</span>
+                        		<span class="warning" ng-show="myForm.dbIp.$error.pattern">IP格式不正确</span>
+								</span>
+                             <input  placeholder="请输入IP地址" type="text" name="dbIp" ng-pattern="ipReg" ng-model="dbIp" required >
+                             </div>
+                             <div><label><span style="color:red">*</span>数据库连接端口:</label>
+                             	<span style="color:red" ng-show="myForm.dbPort.$dirty && myForm.dbIp.$invalid">
+                             	
+								<span ng-show="myForm.dbPort.$error.required">此项不能为空</span>
+								<span class="warning" ng-show="myForm.dbPort.$error.pattern">端口号格式不正确</span>
+								</span>
+                             <input  placeholder="请输入端口号" type="text" name="dbPort" ng-model="dbPort" ng-pattern="portReg" required>
+                             </div>
+                          </div> 
+                           <div class="row clearfix"> 
+                            <div> <label><span style="color:red">*</span>连接数据库名:</label>
+                          		<span style="color:red" ng-show="myForm.dbName.$dirty && myForm.dbName.$invalid">
+								<span ng-show="myForm.dbName.$error.required">此项不能为空</span>
+								</span>
+                            <input  placeholder="请输入数据库名" type="text" name="dbName" ng-model= "dbName" required>
+                            </div>
+                            <div> <label>数据库连接参数:</label><input  placeholder="请输入数据库连接参数" type="text" name="dbPara"></div>
+                          </div> 
+                           <div class="row clearfix"> 
+                            <div> <label><span style="color:red">*</span>连接数据库的用户名:</label>
+                            <span style="color:red" ng-show="myForm.dbUsername.$dirty && myForm.dbUsername.$invalid">
+								<span ng-show="myForm.dbUsername.$error.required">此项不能为空</span>
+								</span>
+                            <input  placeholder="请输入用户名" type="text" name="dbUsername" ng-model = "dbUsername" required></div>
+                            <div><label><span style="color:red">*</span>连接数据库的密码</label>
+                            <span style="color:red" ng-show="myForm.dbPassword.$dirty && myForm.dbPassword.$invalid">
+								<span ng-show="myForm.dbPassword.$error.required">此项不能为空</span>
+								</span>
+                            <input  placeholder="请输入密码" type="text" name="dbPassword" ng-model="dbPassword" required></div>
+                          </div> 
+                         
+                           <div class="row clearfix"> 
+                            <div>  <label>管理单位:</label><input  placeholder="请输入管理单位" type="text" name="adminCompany"></div>
+                            <div>  <label>管理员:</label><input  placeholder="请输入管理员" type="text" name="adminName"></div>
+                          </div>
+                          <div class="row clearfix"> 
+                            <div><label>联系电话:</label>
+                            <span style="color:red" ng-show="myForm.adminPhone.$dirty && myForm.adminPhone.$invalid">
+								
+                            <input  placeholder="请输入联系电话" type="text" name="adminPhone"   >
+                             </div>
+                         
+                          </div>
+                           <div class="row clearfix"> 
+                             <div> <label>描述:</label><textarea  placeholder="请输入描述信息" name="description" style="  resize : none;border:1px solid #ddd"></textarea></div>  
+
+                         
+                          </div>      
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn-success btn" ng-click="check()" >确定</button>
+                      <button type="button" class="btn" ng-click="show=false" >取消</button>
+                    </div>
+                
+                </div>
+
+     <div class="layer" ng-show="show"></div>
+          
+    </div>

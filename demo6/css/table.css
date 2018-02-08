@@ -1,0 +1,182 @@
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	 table-layout: fixed ;
+}
+td{
+
+　　white-space: nowrap;
+　　overflow: hidden;
+　　text-overflow: ellipsis;
+
+}
+
+.pagesize {
+	height: 40px;
+	border-top: 1px solid #8492af;
+	padding: 10px 20px 0;
+}
+
+.pagesize>div {
+	width: 300px font-size: 18px;
+}
+
+.pagesize>div>* {
+	display: inline-block;
+	line-height: 30px;
+}
+
+.pagesize>div:first-child a {
+	width: 36px;
+	line-height: 26px;
+	text-align: center;
+	color: #3b3b3b;
+}
+
+.aActive {
+	border-radius: 13px;
+	border: 1px solid #8492af;
+}
+
+.pagesize>div:first-child {
+	float: left;
+}
+
+.pagesize>div:last-child {
+	float: right;
+}
+
+.pagesize input {
+	float: right;
+	margin-left: 10px;
+}
+
+.pagesize input[type=text] {
+	width: 50px;
+	padding-left: 0;
+	text-align: center;
+	    height: 27px;
+}
+
+.pagesize>div:last-child * {
+	width: 56px;
+	line-height: 26px;
+	text-align: center;
+	color: #3b3b3b;
+}
+
+.pactive {
+	color: #3b3b3b;
+}
+
+/*table*/
+.table .tcontent {
+	height: 500px;
+	overflow-x: auto;
+	width: 100%;
+	overflow-y: auto;
+	/*width:-webkit-calc(100% - (10px + 5px) * 2);*/
+}
+
+.table tr {
+	line-height: 40px;
+	border-bottom: 1px solid #e2e2e2;
+	font-size: 12px;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-ms-transition: 0.5s;
+	transition: 0.5s;
+}
+
+.table tr td {
+	padding-right: 32px;
+	max-width: 200px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	
+}
+.table .thead{
+	position: relative;
+	height: 50px;
+}
+.table .thead table {
+	position: absolute;
+	top: 0;
+}
+
+.table .thead tr {
+	display: block;
+	width: 100%;
+}
+
+.table .thead td {
+	font-weight: 600;
+	cursor: pointer;
+	
+}
+.thead td{
+	text-align:center;
+}
+
+/* .thead td:nth-child(2){ */
+/* 	text-align:left; */
+/* } */
+
+.table .tbody {
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+
+.table .tbody tr {
+	cursor: pointer;
+}
+
+.table .tbody tr:first-child {
+	margin-top: 50px;
+}
+
+.table .tbody tr:hover {
+	background-color: rgba(217, 208, 208, 0.8) !important;
+}
+
+.table .tbody tr:nth-child(2n-1) {
+	background-color: rgba(217, 208, 208, 0.3);
+}                                   
+
+.selall {
+	cursor: pointer;
+	display: block;
+	line-height: 28px;
+	width: 60px;
+	text-align: center;
+	background: url(../images/login-info.png) 5px -106px no-repeat;
+}
+
+.sel, .onsel {
+	display: block;
+	width: 60px;
+	height: 31px;
+	cursor: pointer;
+}
+
+.sel {
+	background: url(../images/sel.png) center -31px no-repeat;
+}
+
+.onsel {
+	background: url(../images/sel.png) center 0 no-repeat;
+}
+
+.tb_left {
+	text-align: left;
+}
+
+.tb_right {
+	text-align: right;
+}
+
+.tb_center {
+	text-align: center;
+}

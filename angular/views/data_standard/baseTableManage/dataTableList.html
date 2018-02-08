@@ -1,0 +1,212 @@
+  <style type="text/css">
+      h4 {
+          margin: 0;
+          padding: 0;
+      }
+
+       .modal-dialog {
+            position: absolute;
+            top: 15%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            z-index: 100;
+       }
+       .modal-header{
+             height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+            background: rgb(17,142,238);
+            color: #fff;
+            margin-bottom: 10px;
+       }
+       .modal-body  .row{
+         
+           padding-left: 20px;
+       }
+       .modal-body  .row div {
+          float: left;
+          margin: 10px 20px 10px 20px;
+       } 
+        .modal-body  .row div input {
+          	display: block;
+		    height: 30px;
+		    width: 500px;
+		    border-radius: 3px;
+		    -webkit-appearance: textfield;
+		    border: 1px solid #ccc;
+		    margin-top: 3px;
+		    padding-left: 5px;
+        }
+       
+         .modal-body  .row select{
+         	    display: block;
+			    height: 30px;
+			    width: 255px;
+			    border-radius: 3px;
+			   	color:#555;
+			    border: 1px solid #ccc;
+			    margin-top: 3px;
+			    padding-left: 5px;
+         }
+        .clearfix:after{
+         content: "";
+         display: block;
+        height: 0;
+        clear: both;
+        }
+        textarea {
+          display: block;
+
+          width: 560px;
+          height: 80px;
+          padding-left:5px;
+
+        }
+
+       input[type="button"]{ outline:none; }
+       .layer {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 99;
+          opacity: 0.5;
+          background: #ccc;
+       }
+
+        .modal-footer{
+        	padding-bottom:37px;
+        } 
+       .modal-footer .btn{
+       		float:right;
+       		height: 24px;
+		    width: 110px;
+		    border: 0;
+		    border-radius: 15px;
+		    background: #ddd;
+		   
+		    font-size: 12px;
+		    margin-right: 16px;
+       }
+       .modal-footer .btn-success{
+       		background: #58bc58;
+       		color: #ffffff;
+       }
+      #left-tree,#right-table {
+         float: left;
+      } 
+      #right-table{max-width:1100px;overflow-x:auto;}
+      
+      #left-tree {
+         width: 200px;
+         margin-right: 20px;
+         height: 800px;
+         background: #eee;
+
+      }
+      #left-tree .tree-head {
+          background: rgb(17,142,238);
+          color: #ffffff; 
+          height: 35px;
+         line-height: 35px;
+         padding-left: 10px; 
+         margin-bottom: 8px;
+      }
+      #left-tree .tree-view {
+          margin-left: 5px;
+      }
+  </style>
+    <div  class="wrap-main clearfix" style="background:#ffffff;position:relative;padding-top:2px;padding-left:2px; ">
+    
+              <div id="left-tree">
+                  <div class="tree-head">数据表分类</div>
+                  <div> 
+                    <input  type="text"  ng-model="searchTree"  placeholder="分类搜索" />
+                    <input type="button" value="清空" ng-click="resetTree()" />   
+                   <input type="button" value="搜索"  ng-click="filterTree()" />   
+                  </div>
+                  <tree-view  tree-data="tree" text-field="name" value-field='id' item-clicked="itemClicked($item)" item-checked-changed="itemCheckedChanged($item)" can-checked="true">
+                   </tree-view> 
+              </div>
+            <div id="right-table"> 
+              <div id="queryFilter">
+                <div>
+                           
+                     <input  type="text" class="txtBox" ng-model="seachtext.tblName"  placeholder="表名称 " />
+                     <input  type="text" class="txtBox" ng-model="seachtext.tblDesc"  placeholder="表描述 " />
+                     <input type="button" value="查询" class="btn" ng-click="searchFn()" />    
+                   
+                   
+                </div>
+              </div>
+
+              <div class="tableWrap">
+              <cur-Table tb-Id="t1" tb-Url="http://localhost:8080/console/data/standard/baseTable/tableList.do"
+                seach-Text="seachtext" sel-Id="selId" sel-Ids="selIds"
+                sel-Date="selDate" edit="edit(item)" delete="delete(id)"
+                del="del(item)" is-Refresh="isRefresh" is-Seach="isSeach"
+                cur-Format='curFormat(file,value)' dataset='dataset' option="option"  parameters="parameters" struct="struct(item)" table-data="tableData(item)"></cur-Table>
+
+              </div>
+
+                 <div class="modal-dialog" ng-show="show" >
+                 
+                    <div class="modal-header" style="position:relative">
+                     
+                    <h4 class="modal-title">表结构<span style="position:absolute;right:0;top:0" ng-click="cancel()">取消</span></h4>
+
+                    </div>
+                                                  
+                    
+                    <div ng-show="tableEdit" class="modal-body">
+
+                      <form action="" name="myForm" novalidate>                   
+                         
+                           <div class="row clearfix"> 
+                            <div><label>表名称:</label>
+                            <span style="color:red" ng-show="myForm.tblName.$dirty && myForm.tblName.$invalid">不能为空</span>             
+                            <input  placeholder="请输入联系电话" type="text" name="tblName" ng-model="editModel.tblName"  >
+                          </div>                        
+                          </div>
+                           <div class="row clearfix"> 
+                            <div><label>表描述:</label>
+                            <span style="color:red" ng-show="myForm.tblDesc.$dirty && myForm.tblDesc.$invalid">不能为空</span>             
+                            <input  placeholder="请输入联系电话" type="text" name="tblDesc" ng-model="editModel.tblDesc"  >
+                          </div>                        
+                          </div>
+                           <div class="row clearfix"> 
+                            <div><label>表所属类型:</label>
+                            <span style="color:red" ng-show="myForm.tblSchema.$dirty && myForm.tblSchema.$invalid">不能为空</span>             
+                            <input  placeholder="请输入联系电话" type="text" name="tblSchema" ng-model="editModel.tblSchema"  >
+                          </div>                        
+                          </div>
+                           <div class="row clearfix"> 
+                            <div><label>表字符集:</label>
+                            <span style="color:red" ng-show="myForm.tblCharset.$dirty && myForm.tblCharset.$invalid">不能为空</span>             
+                            <input  placeholder="请输入联系电话" type="text" name="tblCharset" ng-model="editModel.tblCharset"  >
+                          </div>                        
+                          </div>
+                           <div class="row clearfix"> 
+                            <div><label>表分类:</label>
+                            <span style="color:red" ng-show="myForm.tblCategopy.$dirty && myForm.tblCategopy.$invalid">不能为空</span>             
+                            <input  placeholder="请输入联系电话" type="text" name="tblCategopy" ng-model="editModel.tblCategopy">
+                          </div>                        
+                          </div>
+ 
+                           
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn-success btn" ng-click="update()"  >确定</button>
+                      <button type="button" class="btn" ng-click="cancel()" >取消</button>
+                    </div>
+                
+                </div>
+
+     <div class="layer" ng-show="show"></div>    
+             
+      </div>
+           
+ </div>

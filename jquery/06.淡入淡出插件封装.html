@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>淡入淡出插件</title>
+	<link rel="stylesheet" href="lib/new.carousel/new.carousel.css">
+	<script src='lib/jquery-3.2.1.js'></script>
+	<script src="lib/new.carousel/new.carousel.js"></script>
+	<script>
+		jQuery(function($){
+			$('.carousel').JackCarousel({
+				imgs:['img/001.jpg','img/002.jpg','img/003.jpg','img/004.jpg'],
+				page:true,
+				autoPlay:true,
+				small:true,
+			})
+			
+		})
+	</script>
+</head>
+<body>
+	<div class="carousel">
+	</div>
+</body>
+</html>

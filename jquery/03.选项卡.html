@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+		.container{width:300px;height:200px;border:1px solid #ddd;position:absolute;left:50%;top:50%;margin-left:-150px; margin-top:-100px;}
+		.container header{height:50px;display:flex;justify-content:center;border:1px solid #ddd;}
+		.container header span{border:1px solid #ddd;width:100px;text-align:center;line-height:3;cursor:pointer;}
+		#content div{text-align:center;vertical-align:center;position:absolute;width:300px;margin:0 auto;}
+		.active{background-color:#f60;color:#fff;}
+	</style>
+	<script src='lib/jquery-3.2.1.js'></script>
+	<script src='js/select.js'></script>
+	
+</head>
+<body>
+	<div class="container">
+		<header>
+			<span>Tab1</span>
+			<span>Tab2</span>
+			<span>Tab3</span>
+		</header>
+		<div id="content">
+			<div>内容1</div>
+			<div>内容2</div>
+			<div>内容3</div>
+		</div>
+	</div>
+</body>
+</html>

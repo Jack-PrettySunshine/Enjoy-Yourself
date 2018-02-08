@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图插件应用</title>
+	<style>
+		/*ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;width:810px;height:320px;overflow:hidden;margin:0 auto;}
+		.carousel ul{position:absolute;top:0;left:0;overflow: hidden;}
+		.carousel ul li{float:left;}
+		.carousel img{display:block;}
+		.carousel>span{position:absolute;left:10px;top:50%;margin-top:-30px;width:30px;height:60px;line-height:60px;text-align:center;background-color: rgba(0,0,0,0.3);color:#fff;}
+		.carousel>span.next{left:auto;right:10px;}
+
+		.carousel .page{position:absolute;left:50%;bottom:10px;transform:translate(-50%,0);}
+		.carousel .page span{display:inline-block;margin:0 5px;width:20px;height:20px;line-height: 20px;text-align:center;background-color: rgba(255,255,255,0.8);border-radius:50%;}
+		.carousel .page span.active{background-color: #fc0;}*/
+
+	ul{list-style: none;padding:0;margin:0;}
+	.JackCarousel{position:relative;margin:0 auto;width:810px;height:320px;overflow:hidden;}
+	.JackCarousel ul{position:relative;left:0;top:0;overflow: hidden;}
+	.JackCarousel li{overflow:hidden;float:left;}
+	
+	.JackCarousel li img{display:block;}
+	
+	.JackCarousel .page{position:absolute;left:50%;bottom:10px;transform:translate(-50%,0);}
+	.JackCarousel .page span{display:inline-block;margin:0 5px;width:30px;height:30px;line-height:30px;text-align:center;background-color:#efefef;border-radius:50%;}
+	.JackCarousel .page span.active{background-color:#f60;color:#fff;}
+	.JackCarousel .prev,.next{position: absolute;width:30px;height:50px;line-height:50px;background-color:rgba(255,255,255,.2);color:#fff;text-align:center;}
+	.JackCarousel .prev{left:0;top:0;bottom:0;margin:auto 0;}
+	.JackCarousel .next{right:0;top:50%;margin-top:-25px;}
+	.JackCarouselCarouselSmall{margin:0 auto;overflow:hidden;}
+	
+	</style>
+	<script src='lib/jquery-3.2.1.js'></script>
+	<script src="lib/jquery.Jackcarousel/jquery.JackCarousel.js"></script>
+	
+	<script>
+	jQuery(function($){
+		$('.carousel').JackCarousel({
+			imgs:['img/001.jpg','img/002.jpg','img/003.jpg','img/004.jpg'],
+			page:true,
+			autoPlay:true,
+			//small:true
+		})
+
+	})
+	</script>
+</head>
+<body>
+	<div class="carousel">
+	</div>
+</body>
+</html>

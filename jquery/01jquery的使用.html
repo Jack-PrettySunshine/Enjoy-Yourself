@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- CDN -->
+	<!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js"></script> -->
+	<script src="lib/jquery-3.2.1.js"></script>
+	<script>
+	/*
+		jQuery别名：$
+			$ = jQuery
+	 */
+		// write less, do more
+		// document.addEventListener('DOMContentLoaded',function(){
+		// 	console.log(jQuery('#box'));
+		// });
+
+		// jQuery延迟代码执行
+		// jQuery(document).ready(function(){
+		// 	console.log(jQuery('#box'));
+		// });
+
+		// 简写
+		// jQuery(function(){
+		// 	console.log(jQuery('#box'));
+		// });
+
+		// 简写plus
+		$(()=>{
+
+			// 1.获取元素（得到一个实例）
+			$('#box')
+
+			// 2.操作元素
+			// .css('font-size',30).css('color','#f00')
+			.css({'font-size':30,color:'#f00'})
+
+			
+
+			console.log($('button'));
+		})
+	</script>
+</head>
+<body>
+	<div id="box">#box</div>
+	<button>1</button>
+	<button>1</button>
+	<button>1</button>
+</body>
+</html>
