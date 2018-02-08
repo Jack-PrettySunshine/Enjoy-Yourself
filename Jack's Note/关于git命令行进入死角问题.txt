@@ -1,6 +1,8 @@
 
-1.git½øÈëvim½çÃæ ÊäÈëCtrl+Z ¼´¿ÉÍË³ö ////////Esc Shift+: 
+1.gitè¿›å…¥vimç•Œé¢ è¾“å…¥Ctrl+Z å³å¯é€€å‡º ////////Esc Shift+: 
 
-2.²é¿´gitËùÓĞÒÑÅäÖÃÏî $ git config --list
+2.æŸ¥çœ‹gitæ‰€æœ‰å·²é…ç½®é¡¹ $ git config --list
 
-3.Git³·ÏúcommitµÄ²Ù×÷ÃüÁî  git reset --hard HEAD^       git reset --hard commitID    git reset --hard HEAD@{n}
+3.Gitæ’¤é”€commitçš„æ“ä½œå‘½ä»¤  git reset --hard HEAD^       git reset --hard commitID    git reset --hard HEAD@{n}
+
+4.git æ’¤é”€åˆå§‹åŒ– åˆ é™¤ .git æ–‡ä»¶å³å¯ æˆ–è€…æ‰§è¡Œå‘½ä»¤ rm -rf .git
