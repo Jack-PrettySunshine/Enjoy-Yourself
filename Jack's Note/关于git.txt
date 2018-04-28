@@ -85,10 +85,12 @@ git log
 
 git-flow主要有5中分支：master、hotfix、release、develop、feature
 
-
-
 feature分支开始于develop分支，完成以后合并到develop分支。
-当完成一定数量feature分支以后，从develop再开一个release分支出来，这些特性将被更行到下一个发布的版本中，之后的feature将不会被合并到release中。
-之后在release分支中，只修改bug，然后完成release分支。完成release分支会完成以下三个操作：1、合并release分支到master；2、给master打上版本的标签；3、release回归到develop分支。
+当完成一定数量feature分支以后，从develop再开一个release分支出来，这些特性将被更行到下一个发布的版本中，
+之后的feature将不会被合并到release中。
+之后在release分支中，只修改bug，然后完成release分支。完成release分支会完成以下三个操作：
+1、合并release分支到master；
+2、给master打上版本的标签
+3、release回归到develop分支。
 当发现master上有bug时，开一个hotfix，完成后合并到master分支。
    
