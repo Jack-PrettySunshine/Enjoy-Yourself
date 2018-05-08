@@ -7,6 +7,8 @@ Git基本常用命令如下：
    git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。
 
    git add XX       把xx文件添加到暂存区去。
+   
+   git reset --mixed 把上次add文件撤销但修改保留。
 
    git commit –m “XX”  提交文件 –m 后面的是注释。
 
