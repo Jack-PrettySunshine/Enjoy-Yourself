@@ -1,0 +1,18 @@
+元素本身开始
+1. nth-of-type(n)
+
+2. nth-child(odd)      奇数
+
+3. nth-child(even)     偶数
+
+4. nth-first-child(2n)
+
+5. nth-last-child(2n-1/3n/3n-1)
+
+
+
+父元素开始
+
+1. last-child 
+
+2. first-child
