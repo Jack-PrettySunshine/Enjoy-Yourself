@@ -39,7 +39,7 @@
   ```
   
   ## 完成后部署
-     两个命令的作用是相同的
+      两个命令的作用是相同的
   ```hexojs
      hexo generate --deploy
      hexo deploy --generate
