@@ -84,3 +84,19 @@
      description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。
   ```
   
+  ## 模版（Scaffold）
+  
+  hexo new photo "My Gallery"
+  
+  | 变量 | 描述 |
+  | --------- | --------- |
+  |layout|布局|
+  |title|标题|
+  |date|文件建立日期|
+  
+  ## 设置文章摘要
+  ```hexo
+     以上是文章摘要 <!--more--> 以下是余下全文 
+  ```
+  
+  
