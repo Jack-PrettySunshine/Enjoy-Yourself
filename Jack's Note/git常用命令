@@ -18,7 +18,7 @@ Git基本常用命令如下：
 
    git log          查看历史记录
 
-   git reset  –hard HEAD^ 或者 git reset  –hard HEAD~ 回退到上一个版本
+   git reset  –-hard HEAD^ 或者 git reset  –-hard HEAD~ 回退到上一个版本
 
                         (如果想回退到100个版本，使用git reset –hard HEAD~100 )
 
