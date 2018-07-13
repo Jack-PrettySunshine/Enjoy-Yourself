@@ -1,4 +1,6 @@
 1.{ width:250px; height:138px; position:fixed; left:50%; margin-left:-125px; top:50%; margin-top:-69px; z-index:9999;}
 
 
-2.Ê¹ÓÃposition: fixed;¹Ì¶¨´°¿Ú¼´¿ÉÀ²¡£ÒªÈÃËü¾ÓÖĞ£¬¸ø¿íºÍ¸ßºó£¬left:50%;top:50%;transform: translateY(-50%) translateX(-50%);²»¹ıtransformµÄÊ¹ÓÃÓĞĞ©ä¯ÀÀÆ÷²»Ö§³Ö¡£
+2.ä½¿ç”¨position: fixed;å›ºå®šçª—å£å³å¯å•¦ã€‚è¦è®©å®ƒå±…ä¸­ï¼Œç»™å®½å’Œé«˜åï¼Œleft:50%;top:50%;transform: translateY(-50%) translateX(-50%);ä¸è¿‡transformçš„ä½¿ç”¨æœ‰äº›æµè§ˆå™¨ä¸æ”¯æŒã€‚
+
+3. top:0; right:0; bottom:0; margin:auto;
