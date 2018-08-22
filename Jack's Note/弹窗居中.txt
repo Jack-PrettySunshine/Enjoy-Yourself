@@ -3,4 +3,4 @@
 
 2.使用position: fixed;固定窗口即可啦。要让它居中，给宽和高后，left:50%;top:50%;transform: translateY(-50%) translateX(-50%);不过transform的使用有些浏览器不支持。
 
-3. top:0; right:0; bottom:0; margin:auto;
+3. top:0; right:0;left:0; bottom:0; margin:auto;position:fixed;
