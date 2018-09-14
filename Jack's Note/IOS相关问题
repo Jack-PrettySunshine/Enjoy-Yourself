@@ -4,3 +4,4 @@
 
 3.在IOS中时间转化Date.parse(time);      这里面的time格式如果是'2018-07-17 09:09' 结果为NAN; 要改为'2018/07/17 09:09' ==>time= time.replace(/-/g,  "/");
 
+4.在ios环境中 页面底部有fixed 则在其上面的元素margin-bottom，padding-bottom无效，可使用空白的div来解决此问题
