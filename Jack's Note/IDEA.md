@@ -32,3 +32,10 @@ ThisCrackLicenseId-{
 -javaagent:D:\PyCharm 2018.2.4\bin\JetbrainsCrack-3.1-release-enc.jar
 ```
 
+```
+c:\windows\system32\drivers\etc
+
+
+0.0.0.0 account.jetbrains.com
+```
+
