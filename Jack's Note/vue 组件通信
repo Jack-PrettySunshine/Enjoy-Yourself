@@ -1,8 +1,8 @@
 
 说到vue组件通信我们可以想到有以下几点：
 
-1.vuex
-2.ref
-3.$emit $on
-4.props
-5.直接找关系         条条大路通罗马
+- vuex
+- ref
+- $emit $on
+- props
+- 直接找关系         条条大路通罗马
