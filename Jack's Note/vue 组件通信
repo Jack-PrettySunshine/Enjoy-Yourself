@@ -4,4 +4,5 @@
 1.vuex
 2.ref
 3.$emit $on
+4.props
 4.直接找关系         条条大路通罗马
