@@ -1,0 +1,28 @@
+```js
+columns:[
+                    {
+                        title: ' ',
+                        width: 60,
+                        key: 'checkBox',
+                        align: 'center',
+                        render:(h,params)=>{
+                            return h('div',[
+                                h('Checkbox',{
+                                    props:{
+                                        value:params.row.checkBox
+                                    },
+                                    on:{
+                                        'on-change':(e)=>{ 
+                                            this.tableList.forEach((items)=>{ //先取消所有对象的勾选，checkBox设置为false
+                                                this.$set(items,'checkBox',false)
+                                            });
+                                            this.tableList[params.index].checkBox = e;  //再将勾选的对象的checkBox设置为true
+                                            this.selectedRow = this.tableList[params.index] ;
+                                        }
+                                    }
+                                })
+                            ])
+                        }
+                    },
+      ]
+```
