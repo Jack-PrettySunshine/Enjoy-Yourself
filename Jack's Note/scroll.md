@@ -1,0 +1,18 @@
+```css
+Add{
+    ::-webkit-scrollbar {
+                    width: 6px;
+                    height: 6px;
+                    background-color: #fff;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #ddd;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #fff;
+    }
+  ```
