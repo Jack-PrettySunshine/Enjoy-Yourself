@@ -16,3 +16,11 @@
 1. last-child 
 
 2. first-child
+
+
+less
+.time.pass  => .time{
+               
+                &.pass{}
+               
+               {
