@@ -21,6 +21,48 @@
 less
 .time.pass  => .time{
                
-                &.pass{}
-               
-               {
+  &.pass{}
+
+ {
+ 
+ 
+ ## 去掉做好一个 .lv 的尾巴
+.lv{
+    margin-top: 10px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+.lv:last-child{
+    border: none;
+}
+
+van-cell-tips{
+    position: relative;
+    .van-cell{
+        overflow: inherit;
+    }
+    .lt{ float: left;
+        &.tips{
+            margin-top: 4px;
+            line-height: 15px;
+        }
+    }
+    .tooltip-box{
+        .van-icon{
+            margin: 0 3px;
+            color: @primary-color;
+        }
+    }
+}
+.van-cell-tips:not(:last-child)::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    right: 0;
+    bottom: 0;
+    left: 0.42667rem;
+    border-bottom: 0.02667rem solid #ebedf0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
